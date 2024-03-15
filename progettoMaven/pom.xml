@@ -5,13 +5,17 @@
     <artifactId>pro</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
-    
+    <properties>
+		<java.version>17</java.version>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+	</properties>
+
     <modules>
         <module>module1</module>
         <module>module2</module>
         <!-- Add more modules as needed -->
     </modules>
-    
     <!-- Define any common dependencies or configurations here -->
     
 </project>

@@ -5,7 +5,7 @@
     
     <parent>
         <groupId>ProgettoL</groupId>
-        <artifactId>progettoMaven</artifactId>
+        <artifactId>pro</artifactId>
         <version>1.0.0</version>
     </parent>
     
