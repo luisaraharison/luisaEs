@@ -20,16 +20,16 @@ public class Metodi {
     public void metodo1() {
         for (Attributi a : attributi) {
             System.out.println(a.getAttributo1() + a.getAttributo2() + a.getAttributo3());//stampa la lista
-        }	
-   }
-   public void metodo2(String a,String b) {
-    for (Attributi t : attributi) {
-        if(t.getAttributo1().equals(a)) {
-            t.setAttributo1(b);
-            System.out.println(t.getAttributo1());//modifica l'attributo 1 in qualcos'altro
+            }	
+        }
+    public void metodo2(String a,String b) {
+        for (Attributi t : attributi) {
+            if(t.getAttributo1().equals(a)) {
+                t.setAttributo1(b);
+                System.out.println(t.getAttributo1());//modifica l'attributo 1 in qualcos'altro
+                }
             }
         }
-    }
 
     public void metodo3(String a,String b) {
         for (Attributi t : attributi) {
