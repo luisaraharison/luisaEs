@@ -8,11 +8,20 @@
         <artifactId>pro</artifactId>
         <version>1.0.0</version>
     </parent>
-    
+
     <artifactId>module1</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    
     <!-- Define module-specific dependencies, configurations, and source code -->
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>3.2.3</version>
+        </dependency>
+    </dependencies>
+    
     
 </project>

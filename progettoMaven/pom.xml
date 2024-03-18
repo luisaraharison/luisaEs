@@ -10,7 +10,7 @@
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 	</properties>
-
+    
     <modules>
         <module>module1</module>
         <module>module2</module>
