@@ -1,1 +1,4 @@
+app\Entity\Attributi.class
 app\Main.class
+app\Utility\MetodiP.class
+app\Service\Metodi.class
