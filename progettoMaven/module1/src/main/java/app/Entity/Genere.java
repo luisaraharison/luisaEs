@@ -5,5 +5,6 @@ public enum Genere {
     thriller,
     fantasy,
     rosa,
-    horror
+    horror,
+    romanzo
 }

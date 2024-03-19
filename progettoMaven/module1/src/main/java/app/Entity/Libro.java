@@ -1,14 +1,31 @@
 package app.Entity;
 
 import java.time.LocalDateTime;
-
-    //titolo, stato (int) enum.disponibile che restituisce int, prezzo double, dataPubblicazione
+    
     public class Libro {
-        private String titolo;
-        private double prezzo;
-        private Stato stato;
-        private LocalDateTime dataPubblicazione;
-        private Genere genere;
+        
+            private int id;
+            private String titolo;
+            private double prezzo;
+            private Genere genere;
+            private LocalDateTime dataPubblicazione;
+            private Stato stato;
+        
+            public Libro(int id, String titolo, double prezzo, Genere genere, LocalDateTime dataPubblicazione, Stato stato) {
+                this.id = id;
+                this.titolo = titolo;
+                this.prezzo = prezzo;
+                this.genere = genere;
+                this.dataPubblicazione = dataPubblicazione;
+                this.stato = stato;
+            }
+        
+        public int getId() {
+            return id;
+        }
+        public void setId(int id) {
+            this.id = id;
+        }
     
         public String getTitolo() {
             return titolo;
@@ -44,6 +61,12 @@ import java.time.LocalDateTime;
         public void setGenere(Genere genere) {
             this.genere = genere;
         }
+        
+        @Override
+        public String toString() {
+            return "Id: " + id + ", Titolo: " + titolo + ", Prezzo: " + prezzo + " euro, Genere: " + genere + ", Data di pubblicazione: " + dataPubblicazione + ", Stato: " + stato;
+        }
+        
     }
     
 
