@@ -1,4 +1,6 @@
-app\Entity\Attributi.class
+app\Entity\Stato.class
 app\Main.class
 app\Utility\MetodiP.class
+app\Entity\Genere.class
+app\Entity\Libro.class
 app\Service\Metodi.class
