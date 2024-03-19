@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
                 this.dataPubblicazione = dataPubblicazione;
                 this.stato = stato;
             }
+            
         
         public int getId() {
             return id;
@@ -40,14 +41,15 @@ import java.time.LocalDateTime;
         public void setPrezzo(double prezzo) {
             this.prezzo = prezzo;
         }
-    
+        /* 
         public Stato getStato() {
             return stato;
         }
+        */
         public void setStato(Stato stato) {
             this.stato = stato;
         }
-
+        
         public LocalDateTime getDatadiPubblicazione() {
             return dataPubblicazione;
         }
