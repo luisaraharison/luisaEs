@@ -46,7 +46,7 @@ public void aggiornaTitolo(int id, String titolo) {
          .findFirst()
          .ifPresent(libro -> {
              String titoloValido = titolo.trim(); 
-             // Applica la regex per controllare il formato del titolo
+             // Controlla il formato del titolo
              if (Pattern.matches("^[A-Z0-9][a-zA-Z0-9]*$", titoloValido)) {
                  libro.setTitolo(titoloValido);
                  System.out.println(libro.getTitolo());
