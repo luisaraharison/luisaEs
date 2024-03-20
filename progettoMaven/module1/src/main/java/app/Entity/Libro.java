@@ -41,7 +41,7 @@ import java.time.LocalDateTime;
         public void setPrezzo(double prezzo) {
             this.prezzo = prezzo;
         }
-        /* 
+         /* 
         public Stato getStato() {
             return stato;
         }
@@ -68,7 +68,6 @@ import java.time.LocalDateTime;
         public String toString() {
             return "Id: " + id + ", Titolo: " + titolo + ", Prezzo: " + prezzo + " euro, Genere: " + genere + ", Data di pubblicazione: " + dataPubblicazione + ", Stato: " + stato;
         }
-        
     }
     
 
