@@ -8,7 +8,7 @@ import org.springframework.boot.SpringApplication;
 
 @SpringBootApplication
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         SpringApplication.run(Main.class, args);
         MetodiP i = new MetodiP();
         i.altriMetodi();

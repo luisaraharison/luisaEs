@@ -16,11 +16,11 @@ public class Metodi {
     public Metodi(){
         libri = new ArrayList<>();
         libri.add(new Libro(0,"Assassinio sull'Orient Express", 20.0, Genere.giallo , LocalDateTime.of(1999, 10, 04, 10, 40, 30), Stato.ordinato ));
-        libri.add(new Libro(1,"Harry Potter", 20.0, Genere.fantasy , LocalDateTime.of(1998, 10, 04, 10, 40, 30), Stato.disponibile));
+        libri.add(new Libro(1,"Harry Potter", 40.0, Genere.fantasy , LocalDateTime.of(1998, 10, 04, 10, 40, 30), Stato.disponibile));
         libri.add(new Libro(2,"Rebecca", 20.0, Genere.thriller , LocalDateTime.of(1997, 10, 04, 10, 40, 30), Stato.disponibile));
         libri.add(new Libro(3,"Orgoglio e pregiudizio", 20.0, Genere.rosa , LocalDateTime.of(1996, 10, 04, 10, 40, 30), Stato.disponibile));
         libri.add(new Libro(4,"Il giardino segreto", 20.0, Genere.fantasy , LocalDateTime.of(1995, 10, 04, 10, 40, 30), Stato.disponibile));
-        libri.add(new Libro(5,"Guerra e pace", 20.0, Genere.romanzo , LocalDateTime.of(1994, 10, 04, 10, 40, 30), Stato.disponibile));
+        libri.add(new Libro(5,"Guerra e pace", 40.0, Genere.romanzo , LocalDateTime.of(1994, 10, 04, 10, 40, 30), Stato.disponibile));
         libri.add(new Libro(6,"Il ritratto di Dorian Gray", 20.0, Genere.romanzo , LocalDateTime.of(1994, 10, 04, 10, 40, 30), Stato.disponibile));
     }
 /* 
@@ -40,23 +40,23 @@ public class Metodi {
 
     
 
-public void aggiornaTitolo(int id, String titolo) {
-    libri.stream()
-         .filter(t -> t.getId() == id)
-         .findFirst()
-         .ifPresent(libro -> {
-             String titoloValido = titolo.trim(); 
-             // Controlla il formato del titolo
-             if (Pattern.matches("^[A-Z0-9][a-zA-Z0-9]*$", titoloValido)) {
-                 libro.setTitolo(titoloValido);
-                 System.out.println(libro.getTitolo());
-                 System.out.println("Per il libro in posizione:" + id + ", il nuovo titolo è: " + titoloValido);
-                 System.out.println(libri);
-             } else {
-                 System.out.println("Il titolo non è nel formato corretto.");
-             }
-         });
-}
+    public void aggiornaTitolo(int id, String titolo) throws Exception {
+        libri.stream()
+             .filter(t -> t.getId() == id)
+             .findFirst()
+             .ifPresent(libro -> {
+                 String titoloValido = titolo.trim(); 
+                 if (Pattern.matches("^[A-Z0-9][a-zA-Z0-9]*$", titoloValido)) {//filtro per libri che non superano i 30euro
+                     libro.setTitolo(titoloValido);
+                     System.out.println(libro.getTitolo());
+                     System.out.println("Per il libro in posizione:" + id + ", il nuovo titolo è: " + titoloValido);
+                     System.out.println(libri);
+                 } else {
+                     throw new IllegalArgumentException("Il titolo non è nel formato corretto.");
+                 }
+             });
+    }
+    
     public void aggiornaPrezzo(int id, double prezzo2) {
         libri.stream()
              .filter(t -> t.getId() == id)
@@ -68,6 +68,54 @@ public void aggiornaTitolo(int id, String titolo) {
                  System.out.println(libri);
              });
     }
+    /* 
+    public void stampaPrezzoP(int id) {
+        libri.stream()
+             .filter(libro -> libro.getId() == id)
+             .findFirst()
+             .ifPresentOrElse(
+                 libro -> {
+                     if (libro.getPrezzo() <= 30.0) {
+                         System.out.println("Il libro costa meno di 30 euro");
+                     } else {
+                         System.out.println("Il libro costa più di 30 euro");
+                     }
+                 },
+                 () -> System.out.println("Nessun libro trovato con l'id specificato")
+             );
+    }
+    */
+
+    public Libro infoPrezzoP(int id) {
+        List<Libro> libriFiltrati = libri.stream()
+                                         .filter(libro -> libro.getId() == id)
+                                         .filter(libro -> libro.getPrezzo() < 30.0)
+                                         .collect(Collectors.toList());
+        System.out.println("Libro trovato: " + libriFiltrati);
+        if (libriFiltrati.isEmpty()) {
+            System.out.println("Nessun libro trovato con prezzo inferiore a 30 euro per l'id " + id);
+            return null;
+        } else {
+            return libriFiltrati.get(0); 
+        }
+    }
+    
+
+    public void stampaLibriPrezzoP() {
+        List<Libro> libriMT = libri.stream()
+            .filter(libro -> libro.getPrezzo() < 30.0)
+            .collect(Collectors.toList());
+    
+        if (libriMT.isEmpty()) {
+            System.out.println("Nessun libro trovato con prezzo inferiore a 30 euro.");
+        } else {
+            System.out.println("Libri con prezzo inferiore a 30 euro:");
+            for (Libro libro : libriMT) {
+                System.out.println(libro);
+            }
+        }
+    }
+    
     
     
     public void aggiornaStato(int id, int indiceStato) {
@@ -105,10 +153,9 @@ public void aggiornaTitolo(int id, String titolo) {
                     } else {
                         System.out.println(libro.getTitolo() + " è fuori dal range.");
                     }
-                });//lettere e numeri dalla a-z la prima maiuscola
+                });
         } catch (Exception e) {
             System.out.println("Si è verificato un errore: " + e.getMessage());
-            e.printStackTrace();
             throw new Exception("Errore durante la ricerca dei libri.");
         }
     }
